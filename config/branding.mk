@@ -1,9 +1,3 @@
-# PotatoCenter
-ifeq ($(filter-out OFFICIAL WEEKLY MASHED, $(BUILD_TYPE)),)
-    PRODUCT_PACKAGES += \
-        PotatoCenter
-endif
-
 ifneq ($(SIGNING_KEYS),)
     PRODUCT_DEFAULT_DEV_CERTIFICATE := $(SIGNING_KEYS)/releasekey
 endif
@@ -46,6 +40,8 @@ ifeq ($(filter $(CURRENT_DEVICE), $(LIST)), $(CURRENT_DEVICE))
               PRODUCT_SYSTEM_DEFAULT_PROPERTIES += ro.potato.type=weekly
             endif
         endif
+        PRODUCT_PACKAGES += \
+            PotatoCenter
     else
         POTATO_VERSION := $(POTATO_VERSION).CHIPS-v$(POTATO_VERNUM).$(BUILD_TYPE)
     endif
